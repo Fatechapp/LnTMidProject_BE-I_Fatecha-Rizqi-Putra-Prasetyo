@@ -1,0 +1,50 @@
+@import url('main.css');
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+    overflow: hidden;
+}
+.content-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    position: absolute;
+    z-index: 5;
+    bottom: 15rem;
+}
+.content-form h1 {
+    color: var(--white);
+    font-size: 3rem;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--blue);
+    color: var(--white);
+    width: 7rem;
+    height: 2rem;
+    border-radius: 0.75rem;
+    transition: ease-in-out 0.25s;
+}
+.btn:hover {
+    background: var(--lightblue);
+    color: var(--black);
+    transition: ease-in-out 0.25s;
+    cursor: pointer;
+    box-shadow: 0 2px 30px rgba(255, 255, 255, 0.75);
+}
+#water-waves {
+    width: 120vw;
+}
+#wave2 {
+    visibility: hidden;
+}
