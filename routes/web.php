@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function () { 
-    return view('dashboard');
-});
+Route::get('/dashboard', [KaryawanController::class, 'viewKaryawan']) -> name('viewKaryawan');
+Route::get('/dashboard/add', [KaryawanController::class, 'addKaryawanView']) -> name('viewKaryawanAdd');
+Route::post('/dashboard/add', [KaryawanController::class, 'addKaryawan']) -> name('karyawanAdd');
