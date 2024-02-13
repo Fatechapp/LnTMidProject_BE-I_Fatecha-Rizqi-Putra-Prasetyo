@@ -7,10 +7,18 @@
     background-color: var(--blue); 
     border-radius: 3px;
 }
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/*Navbar*/
 .navbar {
     background: var(--black);
     color: var(--white);
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5),
+                0px 0px 10px rgba(98, 118, 220, 1);
 }
 .navbar a {
     color: var(--white);
@@ -20,11 +28,48 @@
     color: var(--blue);
     transition: 0.25s ease-in-out;
 }
+.navbar a::after {
+    content: '';
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--white);
+    transform: scaleX(0);
+    transition: 0.15s ease-in-out;
+}
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transition: 0.15s ease-in-out;
+}
 .navbar-brand {
     font-weight: 600;
 }
+
+/* Container */
 .container {
-    padding: 2rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    height: 100vh;
+    overflow: hidden;
+}
+.btn-add {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: 5rem;
+    height: 2rem;
+    background: var(--lightblue);
+    color: var(--white);
+    transition: 0.25s ease-in-out !important;
+}
+.btn-add:hover {
+    background: var(--blue);
+    color: var(--white);
+    width: 6rem;
+    transition: 0.25s ease-in-out;
 }
 .btn-edit {
     background: var(--blue);
@@ -42,11 +87,50 @@
     background: var(--lightred);
     color: var(--black);
 }
+
+/*card-container */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 2rem;
+    overflow-y: scroll;
     width: 72rem;
+    height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+.card {
+    background: var(--white);
+}
+.card-text {
+    font-size: 0.75rem;
+}
+
+/*waves*/
+
+#wave2 {
+    visibility: hidden;
+}
+.wave-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 0;
+    top: 10rem;
+    left: -15rem;
+}
+
+/*footer*/
+footer {
+    color: var(--white) !important;
+    position: relative;
+    z-index: 5;
+    top: 0rem;
+}
+footer a {
+    color: var(--white) !important;
 }
