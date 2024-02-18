@@ -1,0 +1,29 @@
+@import url('main.css');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+form h1 {
+    color: var(--white);
+}
+form span {
+    color: var(--blue);
+}
+form input {
+    width: 30rem !important;
+}
+.btn-submit {
+    background: var(--blue);
+    color: var(--white);
+    transition: 0.25s ease-in-out;
+}
+.btn-submit:hover {
+    background: var(--lightblue);
+    color: var(--black);
+    transition: 0.25s ease-in-out;
+}
