@@ -23,6 +23,11 @@ class KaryawanController extends Controller
         ]);
         return redirect('/dashboard');
     } 
+    public function deleteKaryawan($id) {
+        $karyawans = karyawan::find($id);
+        $karyawans -> delete();
+        return redirect('/dashboard');
+    }
     public function viewKaryawan() {
         $karyawans = karyawan::all();
         return view('dashboard') -> with('semuaKaryawan', $karyawans);
