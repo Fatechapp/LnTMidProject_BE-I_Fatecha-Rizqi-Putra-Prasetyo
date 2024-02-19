@@ -27,3 +27,11 @@ form input {
     color: var(--black);
     transition: 0.25s ease-in-out;
 }
+.barometer {
+    color: #d14949;
+    font-size: 0.75rem;
+}
+.valid {
+    color: var(--blue);
+    font-size: 0.75rem;
+}
