@@ -22,17 +22,21 @@
             @csrf
             <h1>Tambahkan <span>Karyawan</span></h1>
             <div class="input-group mb-3">
-                <input name="nama" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nama" autofocus required>
+                <input name="nama" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nama" autofocus required oninput="updateBarometerNama(this.value)">
             </div>
+            <p id="barometer-nama" class="barometer">Nama karyawan berisi 5 - 20 karakter</p>
             <div class="input-group mb-3">
-                <input name="umur" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Umur" required>
+                <input name="umur" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Umur" required oninput="updateBarometerUmur(this.value)">
             </div>
+            <p id="barometer-umur" class="barometer">Umur karyawan lebih besar dari 20 tahun</p>
             <div class="input-group mb-3">
-                <input name="alamat" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Alamat" required>
+                <input name="alamat" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Alamat" required oninput="updateBarometerAlamat(this.value)">
             </div>
+            <p id="barometer-alamat" class="barometer">Alamat karyawan 10 - 40 karakter</p>
             <div class="input-group mb-3">
-                <input name="noTelp" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nomor Telepon" required>
+                <input name="noTelp" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nomor Telepon" required oninput="updateBarometerNoTelp(this.value)">
             </div>
+            <p id="barometer-notelp" class="barometer">9 - 12 karakter, dimulai dari 08</p>
             <button type="submit" class="btn btn-submit">Tambah</button>        
         </form>
     </div>
@@ -41,5 +45,58 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!--JAVASCRIPT-->
+    <script>
+        function updateBarometerNama(value) {
+            var barometerElement = document.getElementById('barometer-nama');
+            var minLength = 5;
+            var maxLength = 20;
+
+            if (value.length < minLength || value.length > maxLength) {
+                barometerElement.classList.remove('valid');
+                barometerElement.classList.add('barometer');
+            } else {
+                barometerElement.classList.remove('barometer');
+                barometerElement.classList.add('valid');
+            }
+        }
+        function updateBarometerUmur(value) {
+            var barometerElement = document.getElementById('barometer-umur');
+            if (value < 20) {
+                barometerElement.classList.remove('valid');
+                barometerElement.classList.add('barometer');
+            } else {
+                barometerElement.classList.remove('barometer');
+                barometerElement.classList.add('valid');
+            }
+        }
+        function updateBarometerAlamat(value) {
+            var barometerElement = document.getElementById('barometer-alamat');
+            var minLength = 10;
+            var maxLength = 40;
+
+            if (value.length < minLength || value.length > maxLength) {
+                barometerElement.classList.remove('valid');
+                barometerElement.classList.add('barometer');
+            } else {
+                barometerElement.classList.remove('barometer');
+                barometerElement.classList.add('valid');
+            }
+        }
+        function updateBarometerNoTelp(value) {
+            var barometerElement = document.getElementById('barometer-notelp');
+            var minLength = 9;
+            var maxLength = 12;
+
+            if (value.length < minLength || value.length > maxLength && value.startsWith('08')) {
+                barometerElement.classList.remove('valid');
+                barometerElement.classList.add('barometer');
+            } else {
+                barometerElement.classList.remove('barometer');
+                barometerElement.classList.add('valid');
+            }
+        }
+    </script>
 </body>
 </html>
