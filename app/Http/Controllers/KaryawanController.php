@@ -38,14 +38,7 @@ class KaryawanController extends Controller
         $karyawans -> delete();
         return redirect('/dashboard');
     }
-    public function editKaryawanView(Request $request, $id) {
-        $request->validate([
-            'nama' => 'required|min:5|max:20',
-            'umur' => 'required|numeric|min:21',
-            'alamat' => 'required|min:10|max:40',
-            'noTelp' => 'required|regex:/^08[0-9]{9,12}$/',
-        ]);
-        
+    public function editKaryawanView($id) {
         $karyawans = karyawan::find($id);
         return view('editKaryawan', compact('karyawans'));
     }
