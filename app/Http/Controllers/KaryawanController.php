@@ -15,6 +15,12 @@ class KaryawanController extends Controller
     }
 
     public function addKaryawan(Request $request) {
+        $request->validate([
+            'nama' => 'required|min:5|max:20',
+            'umur' => 'required|numeric|min:21',
+            'alamat' => 'required|min:10|max:40',
+            'noTelp' => 'required|regex:/^08[0-9]{9,12}$/',
+        ]);
         karyawan::create([
             'nama' => $request -> nama,
             'umur' => $request -> umur,
@@ -32,7 +38,14 @@ class KaryawanController extends Controller
         $karyawans -> delete();
         return redirect('/dashboard');
     }
-    public function editKaryawanView($id) {
+    public function editKaryawanView(Request $request, $id) {
+        $request->validate([
+            'nama' => 'required|min:5|max:20',
+            'umur' => 'required|numeric|min:21',
+            'alamat' => 'required|min:10|max:40',
+            'noTelp' => 'required|regex:/^08[0-9]{9,12}$/',
+        ]);
+        
         $karyawans = karyawan::find($id);
         return view('editKaryawan', compact('karyawans'));
     }
